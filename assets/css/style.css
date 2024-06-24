@@ -1,0 +1,275 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    height: 100%;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-areas: 
+        "navbar filterbar filterbar filterbar filterbar"
+        "navbar main main main main"
+        "footer selpag selpag selpag selpag";
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 15rem 1fr;
+}
+
+.navbar {
+    grid-area: navbar;
+    background-color: #13579C;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    color: white;
+    position: relative;
+}
+
+.navbar-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    margin-bottom: 50px;
+}
+
+.navbar-title .icon {
+    margin-right: 10px;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+.hamburger-menu span {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+    transition: 0.4s;
+}
+
+.navbar-menu {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.navbar-menu li {
+    margin: 20px 0;
+    display: block;
+}
+
+.menu-toggle:checked + .hamburger-menu + .navbar-menu {
+    display: flex;
+}
+
+.footer {
+    grid-area: footer;
+    background-color: #1E3563;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.footer-icons {
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+    margin: 10px 0;
+}
+
+.footer-icons .icon {
+    font-size: 30px;
+}
+
+.footer-text {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.container-main {
+    grid-area: filterbar / main / selpag;
+    display: flex;
+    flex-direction: column;
+}
+
+.filterbar {
+    grid-area: filterbar;
+    background-color: #E1E2E1;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.filterbar label, .filterbar select {
+    display: block;
+    width: 95%;
+}
+
+.filterbar label {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 5px;
+}
+
+.filterbar select {
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.main {
+    grid-area: main;
+    gap: 10px;
+    padding: 10px;
+}
+
+.productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px;
+}
+
+.card {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    position: relative;
+}
+
+.image-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.card .nombre {
+    font-size: 12pt;
+    font-weight: bold;
+    margin: 0;
+    color: black;
+    text-align: center;
+}
+
+.card .comprar {
+    background-color: #25527B;
+    color: white;
+    font-size: 9pt;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+}
+
+.selpag {
+    grid-area: selpag;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    background-color: #E1E2E1;
+}
+
+.selpag button {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.selpag button:hover {
+    background-color: #f0f0f0;
+}
+
+/* Media queries */
+@media (max-width: 991px) {
+    /* Estilos para tablet */
+}
+
+@media (max-width: 576px) {
+    .grid-container {
+        grid-template-areas: 
+            "navbar"
+            "filterbar"
+            "main"
+            "selpag"
+            "footer";
+        grid-template-rows: auto auto 1fr auto auto;
+        grid-template-columns: 1fr;
+    }
+
+    .navbar {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px 20px;
+    }
+
+    .navbar-title {
+        padding-left: 0;
+        margin-bottom: 0;
+    }
+
+    .navbar-menu {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        display: none;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .menu-toggle:checked + .hamburger-menu + .navbar-menu {
+        display: flex;
+    }
+
+    .productos .card {
+        display: none;
+    }
+
+    .productos .card:nth-child(1) {
+        display: block;
+    }
+}
